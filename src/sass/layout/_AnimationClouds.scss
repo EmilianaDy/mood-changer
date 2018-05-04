@@ -1,0 +1,175 @@
+@mixin cloudAnimation($duration, $delay) {
+    animation-name: animateCloud;
+    animation-duration: $duration;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay: $delay;
+}
+
+@keyframes animateCloud {
+    from {
+        left: -30%;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+.clouds__wrapper {
+    background-color: #00dffc;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+
+    .clouds__low {
+
+        .cloud__wrapper {
+            width: 100%;
+            position: absolute;
+            opacity: 0.6;
+
+            &:nth-of-type(1) {
+                top: 80px;
+                .cloud__element {
+                    @include cloudAnimation(15s, 0s);
+                    transform: scale(0.5);
+                }
+                
+                
+            }
+
+            &:nth-of-type(2) {
+                top: 120px;
+                .cloud__element {
+                    @include cloudAnimation(12s, 0s);
+                    transform: scale(0.3);
+                }
+                
+            }
+
+            &:nth-of-type(3) {
+                top: 200px;
+                .cloud__element {
+                    @include cloudAnimation(15s, 3s);
+                    transform: scale(0.8);
+                }
+            }
+
+            &:nth-of-type(4) {
+                top: 180px;
+                .cloud__element {
+                    @include cloudAnimation(15s, 4s);
+                    transform: scale(0.6); 
+                }
+                
+                
+            }
+
+            &:nth-of-type(5) {
+                top: 130px;
+                .cloud__element {
+                    @include cloudAnimation(15s, 7s);
+                    transform: scale(0.7);
+                } 
+            }
+        }
+
+        .cloud__element {
+            position: absolute;
+            left: -30%;
+        }
+        
+    }
+
+    .clouds__high {
+        background-color: #0CAADC;
+
+            .cloud__wrapper {
+                position: absolute;
+                left: -100%;
+                opacity: .9;
+    
+                &:first-child {
+                    @include cloudAnimation(25s, 0s);
+                    transform: scale(0.9);
+                    // left: -7%;
+                    top: -25px;
+    
+                }
+    
+                &:nth-child(2) {
+                    @include cloudAnimation(25s, 1.5s);
+                    transform: scale(0.6);
+                    // left: 6%;
+                    top: 20px; 
+                }
+    
+                &:nth-child(3) {
+                    @include cloudAnimation(25s, 2.5s);
+                    transform: scale(0.7);
+                    // left: 15%;
+                    top: -44px;
+                    z-index: 2;
+
+                }
+    
+                &:nth-child(4) {
+                    @include cloudAnimation(25s, 3s);
+                    // left: 24%;
+                    z-index: 1;
+                    top: 40px;
+                }
+    
+                &:nth-child(5) {
+                    @include cloudAnimation(25s, 6s);
+                    transform: scale(0.5);
+                    // left: 35%;
+                    z-index: 2;
+                }
+    
+                &:nth-child(6) {
+                    @include cloudAnimation(21s, 8s);
+                    // left: 38%;
+                    top: -20px;
+                }
+    
+                &:nth-child(7) {
+                    @include cloudAnimation(30s, 9s);
+                    transform: scale(0.6);
+                    // left: 48%;
+                    top: 50px;
+                    z-index: 1;
+                }
+    
+                &:nth-child(8) {
+                    @include cloudAnimation(32s, 12s);
+                    // left: 61%;
+                }
+    
+                &:nth-child(9) {
+                    @include cloudAnimation(28s, 20s);
+                    transform: scale(0.8);
+                    // left: 78%;
+                    top: -32px;
+                }
+    
+                &:nth-child(10) {
+                    @include cloudAnimation(20s, 10s);
+                    transform: scale(0.7);
+                    // right: -115px;
+                    top: 30px;
+                }
+            }
+        
+    }
+
+    .tree-image {
+        position: absolute;
+        right: 360px;
+        bottom: 30px;
+        max-height: 300px;
+    }
+
+
+}

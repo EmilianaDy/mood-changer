@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background: $snow;
+}
+
+.App {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}

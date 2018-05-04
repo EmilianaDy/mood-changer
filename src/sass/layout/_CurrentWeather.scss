@@ -1,0 +1,123 @@
+.weather__wrapper {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+
+    .weather__section {
+        display: grid;
+        grid-template-rows: 70px 30px 70px;
+        grid-template-columns: auto;
+        grid-template-areas: "temperature" "location" "description";
+        grid-row-gap: 10px;
+        align-items: center;
+        justify-content: right;
+        margin-right: 30px;
+        opacity: 1;
+        transition: opacity .8s ease;
+        font-size: 20px;
+        
+        .weather__temperature {
+            grid-area: temperature;
+            text-align: right;
+            font-size: 40px;
+        }
+
+        .weather__city {
+            grid-area: location;
+            text-align: right;
+        }
+
+        .weather__city-details {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .weather__description {
+            grid-area: description;
+            text-align: right;
+        }
+
+        .weather__description-details {
+            font-size: 24px;
+            font-weight: 700;
+        }
+    }
+
+    .buttons__section {
+        display: grid;
+        grid-template-columns:  180px 20px 200px  auto;
+        grid-template-areas: "pick . change .";
+        position: relative;
+        margin: 0 20px;
+
+        .Button__pick-mood {
+            grid-area: pick;
+            position: relative;
+
+            .button__link {
+                position: relative;
+
+                &:before {
+                content: '';
+                border-top: #000 solid 2px;
+                border-left: #000 solid 2px;
+                transform: rotate(45deg);
+                width: 8px;
+                height: 8px;
+                position: absolute;
+                top: 16px;
+                left: 18px;
+                transition: all .3s;
+                }
+
+                &:hover {
+                    &:before {
+                        top: 14px;
+                    }
+                }
+            }
+
+        
+            
+        }
+
+        .Button__change-mood {
+             grid-area: change;
+
+             &:hover {
+                position: relative;
+                top: -2px;
+            }
+
+            .button__link {
+                padding: 10px 13px;
+            }
+        }
+
+        .Button {
+            margin-top: 50px;   
+        }
+
+        .dropdown {
+            position: absolute;
+            top: -212px;
+            left: 0;
+            transition: all .3s;
+            cursor: pointer;
+            background-color: #fff;
+            border: 2px solid #000;
+            width: 180px;
+
+            p {
+                padding: 0 15px;
+                margin: 13px 0;
+
+                &:hover {
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
+
+

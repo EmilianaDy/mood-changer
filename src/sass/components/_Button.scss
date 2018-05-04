@@ -1,0 +1,22 @@
+.Button {
+    cursor: pointer;
+    transition: all .3s;
+    border: 2px solid #000;
+    background-color: #fff;
+    color: #000;
+    top: 0;
+    text-align: center;
+
+    .button__link {
+        font-weight: 700;
+        display: block;
+        text-decoration: none;
+        height: 100%;
+        width: 100%;
+        padding: 10px 20px;
+
+        &:visited {
+            color: initial;
+        }
+    }
+}

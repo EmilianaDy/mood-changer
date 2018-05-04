@@ -1,0 +1,71 @@
+@keyframes Rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }  
+}
+
+@keyframes YellowSunbeamAnimation {
+    0% {
+        height: 21px;
+    }
+
+    50% {
+        height: 31px;
+    }
+
+    100% {
+        height: 21px;
+    }
+}
+
+@keyframes OrangeSunbeamAnimation {
+    0% {
+        height: 10px;
+    }
+
+    50% {
+        height: 20px;
+    }
+
+    100% {
+        height: 10px;
+    }
+}
+
+.sun__element {
+        animation: Rotate 8s linear infinite;
+        margin-top: 100px;
+        margin-left: 100px;
+
+        .yellow-sunbeam {
+            animation: YellowSunbeamAnimation 2s linear infinite;
+        }
+
+        .orange-sunbeam {
+            animation: OrangeSunbeamAnimation 2s linear infinite;
+            animation-delay: -1s;
+        }
+    }
+
+.clear-sky__wrapper {
+    background-color: #00dffc;  
+    width: 100%;
+    height: 100%;
+
+    .sunbed-image {
+        position: absolute;
+        right: 360px;
+        bottom: 30px;
+        max-height: 200px;
+    }
+
+    .sun-umbrella-image {
+        position: absolute;
+        right: 500px;
+        bottom: 30px;
+        max-height: 250px;
+    }
+}

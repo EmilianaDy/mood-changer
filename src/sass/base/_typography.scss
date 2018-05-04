@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+@font-face {
+    font-family: 'Roboto Slab';
+    src: url('fonts/RobotoSlab-Regular.woff') format('woff'),
+         url('fonts/RobotoSlab-Regular.woff2') format('woff2'),
+         url('fonts/RobotoSlab-Regular.ttf') format('truetype');
+    font-weight: 400;
+} 
+
+
+body {
+    font-family: 'Nunito', serif;
+}

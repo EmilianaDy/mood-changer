@@ -1,0 +1,87 @@
+import React, { Component} from 'react';
+import Button from './Button';
+import Dropdown from './Dropdown';
+
+
+export default class CurrentWeather extends Component {
+    constructor(props) { 
+        super(props);
+        this.handleChangeMoodAction = this.handleChangeMoodAction.bind(this);
+        this.handlePickMoodMouseEnter = this.handlePickMoodMouseEnter.bind(this);
+        this.handlePickMoodMouseLeave = this.handlePickMoodMouseLeave.bind(this);
+        this.handleWeatherPick = this.handleWeatherPick.bind(this);
+        this.dropdown = null;
+
+        this.state = {
+            dropdownOpened: false
+        }
+    }
+
+    handleChangeMoodAction = () => {
+        this.props.changeConditions("random");
+        this.weatherSection.style.opacity =  "0";
+    }
+
+    handlePickMoodMouseEnter = () => {
+        this.setState({dropdownOpened: true});
+        var dropdownList = this.props.weatherDescriptionsList;
+        this.dropdown = dropdownList.map((weather, id) => 
+             <p key={id} onClick={() => {this.handleWeatherPick(weather)}}>{weather}</p>
+        );   
+    }
+
+    handlePickMoodMouseLeave = () => {
+        if (this.state.dropdownOpened) {
+            this.setState({dropdownOpened: false});
+             return <div>{this.dropdown}</div>;
+        }    
+    }
+
+    handleWeatherPick = (weather) => {
+        this.props.changeConditions(weather);
+        this.setState({dropdownOpened: false});
+        this.weatherSection.style.opacity =  "0";
+    }
+
+    render() {
+        var opacityValue = 0;
+        if (this.state.dropdownOpened) {
+            opacityValue = 1;
+        }
+
+        var dropdownOpacity = {
+            opacity: opacityValue
+        }
+
+        return (
+            <div className="weather__wrapper">
+            <div className="weather__section" ref={(weatherSection) => { this.weatherSection = weatherSection; }}>
+
+                <div className="weather__temperature">
+                   {Math.round(this.props.currentTemperature)} &#176;C
+                </div>
+
+                <div className="weather__city">
+                   I can see you are in <span className="weather__city-details">{this.props.currentCity}</span> now
+                </div>
+
+                <div className="weather__description">
+                <span>Outside the window you see: </span>
+                <span className="weather__description-details">{this.props.weatherConditions}</span>
+                
+                </div>
+                
+            </div>
+            <div className="buttons__section">
+                <div className="Button__pick-mood" >
+                <Dropdown onMouseEnter={this.handlePickMoodMouseEnter} onMouseLeave={this.handlePickMoodMouseLeave} buttonText="Pick your own"/>
+                </div>
+                <div className="dropdown" style={dropdownOpacity} onMouseEnter={this.handlePickMoodMouseEnter} onMouseLeave={this.handlePickMoodMouseLeave}>{this.dropdown}</div>
+                <div className="Button__change-mood">
+                <Button onClick={this.handleChangeMoodAction} buttonText="Show current weather"/>
+                </div>  
+            </div>
+            </div>
+        );
+    }
+}

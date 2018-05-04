@@ -1,0 +1,123 @@
+
+.animation__wrapper {
+.snow__wrapper  {
+    background-color: #6b92b9;
+    height: 100%;
+
+    .clouds__wrapper {
+        .cloud__wrapper {
+
+        &:first-child {
+            transform: scale(0.9);
+            left: -7%;
+            top: -25px;
+
+            ellipse, rect {
+                fill: #fff;
+            }
+        }
+
+        &:nth-child(2) {
+            transform: scale(0.6);
+            left: 6%;
+            top: 20px;
+
+            ellipse, rect {
+                fill: #dfe9ee;
+            }
+        }
+
+        &:nth-child(3) {
+            transform: scale(0.7);
+            left: 15%;
+            top: -44px;
+            z-index: 0;
+
+            ellipse, rect {
+                fill: #d0e2ec;
+            }
+        }
+
+        &:nth-child(4) {
+            left: 24%;
+            z-index: 1;
+
+            ellipse, rect {
+                fill: #fff;
+            }
+        }
+
+        &:nth-child(5) {
+            transform: scale(0.5);
+            left: 35%;
+            z-index: 2;
+
+            ellipse, rect {
+                fill: #dfe9ee;
+            }
+        }
+
+        &:nth-child(6) {
+            left: 38%;
+            top: -20px;
+
+            ellipse, rect {
+                fill: #e3eaee;
+            }
+        }
+
+        &:nth-child(7) {
+            transform: scale(0.6);
+            left: 48%;
+            top: 50px;
+            z-index: 1;
+
+            ellipse, rect {
+                fill: #fff;
+            }
+        }
+
+        &:nth-child(8) {
+            left: 61%;
+
+            ellipse, rect {
+                fill: #dfe9ee;
+            }
+        }
+
+        &:nth-child(9) {
+            transform: scale(0.8);
+            left: 78%;
+            top: -32px;
+
+            ellipse, rect {
+                fill: #fff;
+            }
+        }
+
+        &:nth-child(10) {
+            transform: scale(0.7);
+            right: -115px;
+            top: 30px;
+
+            ellipse, rect {
+                fill: #d0e2ec;
+            }
+        }
+    }
+}
+
+    .snowCanvas {
+        background-color: #6b92b9;
+        overflow: hidden;
+        margin-top: 100px;
+    }
+
+    img {
+        position: absolute;
+        bottom: 30px;
+        right: 360px;
+        max-height: 250px;
+    }
+}
+}
