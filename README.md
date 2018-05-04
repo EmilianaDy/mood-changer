@@ -1,6 +1,11 @@
-#Weather changer
+# Weather changer
 
-Web applation shoing current weather conditions and various weather animations.
+Live: https://weather-changer.herokuapp.com/ 
+(enable geolocation in your browser)
+
+Don't like what's outside the window? Just change it! :)
+
+Web application showing current weather conditions and various weather animations. 
 
 Technologies used:
 - React.js
