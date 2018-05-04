@@ -9,12 +9,15 @@ export default class AnimationClouds extends Component {
     constructor(props) {
         super(props);
         this.clouds = {};
+        this.cloudsAmountLow = 5; 
+        this.cloudsAmountHigh = 10; 
     }
 
     getClouds(cloudsAmount) {
-        this.clouds = {     amount: cloudsAmount,
-                            cloudsElements: []
-                    };
+        this.clouds = {
+            amount: cloudsAmount,
+            cloudsElements: []
+        };
 
         _.times(this.clouds.amount, (index) => {
             this.clouds.cloudsElements.push(<CloudElement key={index} />);
@@ -31,7 +34,7 @@ export default class AnimationClouds extends Component {
                 <div>  
                     <div className="clouds__low">
                         <SunElement />
-                        {this.getClouds(5)}
+                        {this.getClouds(this.cloudsAmountLow)}
                     </div>
                     <img className="tree-image" src={tree} alt="tree"/>
                 </div>
@@ -39,14 +42,14 @@ export default class AnimationClouds extends Component {
 
                 {(this.props.cloudDensity === "medium") && 
                 <div className="clouds__medium">
-                    {this.getClouds(5)}
+                    {this.getClouds(this.cloudsAmountLow)}
                 </div>
                 }
 
                 {(this.props.cloudDensity === "high") && 
                 <div>
                     <div className="clouds__high">
-                        {this.getClouds(10)}
+                        {this.getClouds(this.cloudsAmountHigh)}
                     </div>
                     <img className="tree-image" src={tree} alt="tree"/>
                 </div>

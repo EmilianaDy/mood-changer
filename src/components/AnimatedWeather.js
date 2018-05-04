@@ -22,7 +22,7 @@ export default class AnimatedWeather extends Component {
                 return <AnimationRain dropsAmount="low"/>
 
             case "few clouds":
-                return <AnimationClouds  cloudDensity="low"/>
+                return <AnimationClouds cloudDensity="low"/>
 
             case "broken clouds":
                 return <AnimationClouds cloudDensity="high"/>

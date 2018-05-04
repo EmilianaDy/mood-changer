@@ -8,7 +8,7 @@ export default class Button extends Component {
     }
 
     static defaultProps = {
-            buttonText: "Click me!"
+        buttonText: "Click me!"
     }
 
     handleClickAction = () => {
@@ -17,8 +17,9 @@ export default class Button extends Component {
 
     render() {
         return (
-            <div    className="Button" 
-                    onClick={this.handleClickAction} >
+            <div
+                className="Button" 
+                onClick={this.handleClickAction}>
                 <div className="button__link" >{this.props.buttonText}</div>
             </div>
         )

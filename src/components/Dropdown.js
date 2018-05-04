@@ -10,8 +10,8 @@ export default class Dropdown extends Component {
     }
 
     static defaultProps = {
-            buttonText: "Hover me!"
-        }
+        buttonText: "Hover me!"
+    }
 
     handleMouseEnterAction = () => {
         if(this.props.onMouseEnter) {
@@ -27,9 +27,10 @@ export default class Dropdown extends Component {
 
     render() {
         return (
-            <div    className="Button" 
-                    onMouseEnter={this.handleMouseEnterAction} 
-                    onMouseLeave={this.handleMouseLeaveAction}>
+            <div
+                className="Button" 
+                onMouseEnter={this.handleMouseEnterAction} 
+                onMouseLeave={this.handleMouseLeaveAction}>
                 <div className="button__link" >{this.props.buttonText}</div>
             </div>
         )

@@ -54,9 +54,7 @@ export default class App extends Component {
             default:
               currentWeather = this.state.currentWeather;
           }
-            
-            this.setState({weatherConditions: currentWeather}); 
-               
+          this.setState({weatherConditions: currentWeather});  
         } else {
             this.setState({weatherConditions: description});    
         }
@@ -76,10 +74,8 @@ export default class App extends Component {
   showTemperature = () => {
     this.getLocation()
         .then(function(positionObj) {
-          var myLatt = positionObj.myLat;
-          var myLonn = positionObj.myLon;
           var api = 'https://api.openweathermap.org/data/2.5/weather?';
-          var myPosition = 'lat=' + myLatt + '&lon=' + myLonn + '&units=metric';
+          var myPosition = 'lat=' + positionObj.myLat + '&lon=' + positionObj.myLon + '&units=metric';
           var apiKey = '&APPID=4335ee325906565f64956605fca2ca89';
           var apiUrl = api + myPosition + apiKey;
               
@@ -128,5 +124,3 @@ export default class App extends Component {
     );
   }
 }
-
-

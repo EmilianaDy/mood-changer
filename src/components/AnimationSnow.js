@@ -32,13 +32,13 @@ export default class AnimationSnow extends Component {
                     var flake = this.snowFlakes[i];
                     ctx.beginPath();
                     ctx.moveTo(flake.x, flake.y);
-                    ctx.arc(flake.x, flake.y, flake.r, 0, Math.PI*2, true); 
+                    ctx.arc(flake.x, flake.y, flake.r, 0, Math.PI * 2, true); 
                     ctx.fill();
 
-                    if (flake.r>=4) {
-                        flake.y+=3
+                    if (flake.r >= 4) {
+                        flake.y += 3
                     } else {
-                            flake.y+=flake.r
+                        flake.y += flake.r
                     }
 
                     if (flake.y >= this.canvasHeight) {
@@ -54,9 +54,9 @@ export default class AnimationSnow extends Component {
     setFlakesData = () => {  
         for (let i = 0; i < this.maxSnowFlakes; i++) {
             this.snowFlakes.push({
-                x: Math.random()*this.canvasWidth,
-                y: Math.random()*this.canvasHeight,
-                r: Math.random()*5+1
+                x: Math.random() * this.canvasWidth,
+                y: Math.random() * this.canvasHeight,
+                r: Math.random() * 5 + 1
             })
         }
     }

@@ -51,37 +51,37 @@ export default class CurrentWeather extends Component {
         }
 
         var dropdownOpacity = {
-                    opacity: opacityValue
-                }
+            opacity: opacityValue
+        }
 
         return (
             <div className="weather__wrapper">
-            <div className="weather__section" ref={(weatherSection) => { this.weatherSection = weatherSection; }}>
+                <div className="weather__section" ref={(weatherSection) => { this.weatherSection = weatherSection; }}>
 
-                <div className="weather__temperature">
-                   {Math.round(this.props.currentTemperature)} &#176;C
+                    <div className="weather__temperature">
+                    {Math.round(this.props.currentTemperature)} &#176;C
+                    </div>
+
+                    <div className="weather__city">
+                    I can see you are in <span className="weather__city-details">{this.props.currentCity}</span> now
+                    </div>
+
+                    <div className="weather__description">
+                        <span>Outside the window you see: </span>
+                        <span className="weather__description-details">{this.props.weatherConditions}</span>                   
+                    </div>
+                    
                 </div>
-
-                <div className="weather__city">
-                   I can see you are in <span className="weather__city-details">{this.props.currentCity}</span> now
-                </div>
-
-                <div className="weather__description">
-                <span>Outside the window you see: </span>
-                <span className="weather__description-details">{this.props.weatherConditions}</span>
                 
+                <div className="buttons__section">
+                    <div className="Button__pick-mood">
+                        <Dropdown onMouseEnter={this.handlePickMoodMouseEnter} onMouseLeave={this.handlePickMoodMouseLeave} buttonText="Pick your own"/>
+                    </div>
+                    <div className="dropdown" style={dropdownOpacity} onMouseEnter={this.handlePickMoodMouseEnter} onMouseLeave={this.handlePickMoodMouseLeave}>{this.dropdown}</div>
+                    <div className="Button__change-mood">
+                        <Button onClick={this.handleChangeMoodAction} buttonText="Show current weather"/>
+                    </div>  
                 </div>
-                
-            </div>
-            <div className="buttons__section">
-                <div className="Button__pick-mood">
-                    <Dropdown onMouseEnter={this.handlePickMoodMouseEnter} onMouseLeave={this.handlePickMoodMouseLeave} buttonText="Pick your own"/>
-                </div>
-                <div className="dropdown" style={dropdownOpacity} onMouseEnter={this.handlePickMoodMouseEnter} onMouseLeave={this.handlePickMoodMouseLeave}>{this.dropdown}</div>
-                <div className="Button__change-mood">
-                    <Button onClick={this.handleChangeMoodAction} buttonText="Show current weather"/>
-                </div>  
-            </div>
             </div>
         );
     }

@@ -9,7 +9,10 @@ export default class AnimationRain extends Component {
         this.canvasRef = React.createRef();
         this.setDropsStartingPosition = this.setDropsStartingPosition.bind(this);
         this.moveDrops = this.moveDrops.bind(this);
-        this.rainDrops = [];      
+        this.rainDrops = []; 
+        this.maxRainDropsHigh = 150;  
+        this.maxRainDropsLow = 50;   
+        this.moveIncrease = 3;
         this.canvasWidth = window.innerWidth;
         this.canvasHeight = window.innerHeight - 100;
     }
@@ -25,10 +28,10 @@ export default class AnimationRain extends Component {
 
     setMaxRainDrops = () => {
         if (this.props.dropsAmount==="high") {
-            this.maxRainDrops = 150;
+            this.maxRainDrops = this.maxRainDropsHigh;
         }
         else if (this.props.dropsAmount==="low") {
-            this.maxRainDrops = 50;
+            this.maxRainDrops = this.maxRainDropsLow;
         }
     }
 
@@ -44,14 +47,14 @@ export default class AnimationRain extends Component {
                     var drop = this.rainDrops[i];
                     ctx.beginPath();
                     ctx.moveTo(drop.x, drop.y);
-                    ctx.arc(drop.x, drop.y, 5, 0, Math.PI*2, true); 
-                    ctx.moveTo(drop.x+5, drop.y);
-                    ctx.lineTo(drop.x,drop.y-10);
-                    ctx.lineTo(drop.x-5,drop.y);
+                    ctx.arc(drop.x, drop.y, 5, 0, Math.PI * 2, true); 
+                    ctx.moveTo(drop.x + 5, drop.y);
+                    ctx.lineTo(drop.x,drop.y - 10);
+                    ctx.lineTo(drop.x - 5,drop.y);
                     ctx.lineTo(drop.x, drop.y); 
                     ctx.closePath();
                     ctx.fill();
-                    drop.y+=3
+                    drop.y += this.moveIncrease;
                     
                     if (drop.y >= this.canvasHeight) {
                         drop.y = 0;
@@ -68,8 +71,8 @@ export default class AnimationRain extends Component {
 
         for (let i = 0; i < this.maxRainDrops; i++) {
             this.rainDrops.push({
-                x: Math.random()*this.canvasWidth,
-                y: Math.random()*this.canvasHeight
+                x: Math.random() * this.canvasWidth,
+                y: Math.random() * this.canvasHeight
             })
         }
     }
@@ -79,8 +82,8 @@ export default class AnimationRain extends Component {
             "rain__wrapper": true,
             "light__rain__wrapper": this.props.dropsAmount==="high" ? false : true
         });
-
         var cloudDensity = this.props.dropsAmount==="high" ? "high" : "medium";
+        
         return (
             <div className={rainClassNames}>
             <AnimationClouds cloudDensity={cloudDensity}/>
