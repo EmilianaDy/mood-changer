@@ -78,9 +78,8 @@
                     fill: #959292;
                 }
             }
-        }
-        }
-        
+            }
+        }      
     }
 
     .clouds__wrapper {
@@ -196,12 +195,12 @@
     background-color: #016FB9;
     overflow: hidden;
     margin-top: 100px;
-}
-}
-
-.light__rain__wrapper {
-    .rainCanvas {
-        background-color: #0284DB;
     }
 }
+
+    .light__rain__wrapper {
+        .rainCanvas {
+            background-color: #0284DB;
+        }
+    }
 }

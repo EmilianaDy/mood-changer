@@ -1,20 +1,19 @@
 // BASE
-@import "sass/base/_colors.scss";
-@import "sass/base/_normalize.scss";
-@import "sass/base/_typography.scss";
+@import "sass/base/colors";
+@import "sass/base/normalize";
+@import "sass/base/typography";
 
 // COMPONENTS
-@import "sass/components/_Button.scss";
+@import "sass/components/Button";
+@import "sass/components/Loader";
+@import "sass/components/AnimatedWeather";
+@import "sass/components/CurrentWeather";
+@import "sass/components/AnimationClearSky";
+@import "sass/components/AnimationClouds";
+@import "sass/components/AnimationRain";
+@import "sass/components/AnimationThunderstorm";
+@import "sass/components/AnimationSnow";
 
 // LAYOUT
-@import "sass/layout/_Header.scss";
-@import "sass/layout/_AnimatedWeather.scss";
-@import "sass/layout/_page.scss";
-@import "sass/layout/_CurrentWeather.scss";
-@import "sass/layout/_AnimationClearSky.scss";
-@import "sass/layout/_AnimationClouds.scss";
-@import "sass/layout/_AnimationRain.scss";
-@import "sass/layout/_AnimationThunderstorm.scss";
-@import "sass/layout/_AnimationSnow.scss";
-@import "sass/layout/_Loader.scss";
-
+@import "sass/layout/Header";
+@import "sass/layout/page";

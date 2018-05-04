@@ -8,30 +8,22 @@
 }
 
 @keyframes YellowSunbeamAnimation {
-    0% {
+    0%, 100% {
         height: 21px;
     }
 
     50% {
         height: 31px;
     }
-
-    100% {
-        height: 21px;
-    }
 }
 
 @keyframes OrangeSunbeamAnimation {
-    0% {
+    0%, 100% {
         height: 10px;
     }
 
     50% {
         height: 20px;
-    }
-
-    100% {
-        height: 10px;
     }
 }
 

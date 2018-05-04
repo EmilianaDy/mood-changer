@@ -13,37 +13,50 @@ export default class App extends Component {
       currentCity: "myCity",
       currentTemperature: "0",
       weatherConditions: "clear sky",
-      currentWeather: 'current weather',
-      weatherReady: false
+      currentWeather: "current weather",
+      weatherReady: false,
+      mobileWidth: false
     };
 
     this.changeConditions = this.changeConditions.bind(this);
-    this.weatherDescriptionsList = ["Clear Sky", "Shower Rain", "Rain", "Few clouds", "Broken clouds", "Thunderstorm", "Snow"]
+    this.weatherDescriptionsList = ["clear sky", "shower rain", "rain", "few clouds", "broken clouds", "thunderstorm", "snow"];
+  }
+
+  componentWillMount() {
+    this.isMobileView();
   }
 
   componentDidMount() {
     this.showTemperature();
+    window.addEventListener("resize", this.isMobileView);
   }
 
-  changeConditions(description) {
-        
+  isMobileView = () => {
+    if (window.innerWidth <= 1000) {
+      this.setState({mobileWidth: true});
+    } else {
+      this.setState({mobileWidth: false});
+    }
+  }
 
+  changeConditions(description) { 
         if (description === "current") {
           var currentWeather;
 
           // handle conditions without animation
           switch (description) {
-            case "Scattered clouds":
-              currentWeather = "Broken Clouds";
+            case "scattered clouds":
+              currentWeather = "broken clouds";
               break;
-            case "Mist":
-              currentWeather = "Broken Clouds";
+            case "mist":
+              currentWeather = "broken Clouds";
               break;
             default:
               currentWeather = this.state.currentWeather;
           }
             
-            this.setState({weatherConditions: currentWeather});    
+            this.setState({weatherConditions: currentWeather}); 
+               
         } else {
             this.setState({weatherConditions: description});    
         }
@@ -90,24 +103,27 @@ export default class App extends Component {
         })
   }
 
-
-
   render() {
     return (
       <div>
-      {!this.state.weatherReady && 
-      <Loader />
-        }
-      <div className="App">
-        <Header />
-        <AnimatedWeather weatherConditions = {this.state.weatherConditions}/>
-        <CurrentWeather weatherConditions = {this.state.weatherConditions}
-                        currentCity = {this.state.currentCity}
-                        currentTemperature = {this.state.currentTemperature}
-                        changeConditions = {this.changeConditions}
-                        weatherDescriptionsList = {this.weatherDescriptionsList}
-        />
-      </div>
+        {this.state.mobileWidth && 
+        <div className="mobile-view-info">
+        <span>For better experience, open the app using desktop browser. Enjoy!</span>
+        </div>}
+
+        {!this.state.weatherReady && 
+        <Loader />}
+
+        <div className="App">
+          <Header />
+          <AnimatedWeather weatherConditions = {this.state.weatherConditions}/>
+          <CurrentWeather weatherConditions = {this.state.weatherConditions}
+                          currentCity = {this.state.currentCity}
+                          currentTemperature = {this.state.currentTemperature}
+                          changeConditions = {this.changeConditions}
+                          weatherDescriptionsList = {this.weatherDescriptionsList}
+          />
+        </div>
       </div>
     );
   }

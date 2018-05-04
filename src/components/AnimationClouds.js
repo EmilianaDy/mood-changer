@@ -8,13 +8,12 @@ export default class AnimationClouds extends Component {
 
     constructor(props) {
         super(props);
-
         this.clouds = {};
     }
 
     getClouds(cloudsAmount) {
-        this.clouds = {  amount: cloudsAmount,
-                        cloudsElements: []
+        this.clouds = {     amount: cloudsAmount,
+                            cloudsElements: []
                     };
 
         _.times(this.clouds.amount, (index) => {
@@ -26,8 +25,6 @@ export default class AnimationClouds extends Component {
 
 
     render() {
-
-        
         return (
             <div className="clouds__wrapper">
                 {(this.props.cloudDensity === "low") &&    

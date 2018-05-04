@@ -7,37 +7,35 @@ import AnimationSnow from './AnimationSnow'
 
 export default class AnimatedWeather extends Component {
 
-    provideAnimation() {
-        
-        switch (this.props.weatherConditions) {
+    provideAnimation() {      
+        switch (this.props.weatherConditions.toLowerCase()) {
             default:
                 return <AnimationClearSky />
 
-            case "Clear sky":
+            case "clear sky":
                 return <AnimationClearSky />
 
-            case "Shower Rain":
+            case "shower rain":
                 return <AnimationRain dropsAmount="high"/>
 
-            case "Rain":
+            case "rain":
                 return <AnimationRain dropsAmount="low"/>
 
-            case "Few clouds":
+            case "few clouds":
                 return <AnimationClouds  cloudDensity="low"/>
 
-            case "Broken clouds":
+            case "broken clouds":
                 return <AnimationClouds cloudDensity="high"/>
             
-            case "Thunderstorm":
+            case "thunderstorm":
                 return <AnimationThunderstorm />
 
-            case "Snow":
+            case "snow":
                 return <AnimationSnow />
         }
     }
     
     render() {
-
         return (
             <div className="animation__wrapper">
                 {this.provideAnimation()}

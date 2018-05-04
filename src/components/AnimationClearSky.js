@@ -7,7 +7,6 @@ export default class AnimationClearSky extends Component {
     render() {
         return (
             <div className="clear-sky__wrapper">
-            
                 <SunElement />
                 <img className="sunbed-image" alt="sunbed" src={sunbed}/>
                 <img className="sun-umbrella-image" alt="sun-umbrella" src={sunUmbrella}/>

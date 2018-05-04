@@ -2,7 +2,6 @@ import React, { Component} from 'react';
 import CloudElement from './CloudElement';
 import animal from '../images/animal.svg'
 
-
 export default class AnimationThunderstorm extends Component {
     render() {
         return (
@@ -22,7 +21,7 @@ export default class AnimationThunderstorm extends Component {
                     <div className="thunder-element-3"></div>
                 </div>
                 <img className="animal-image" src={animal} alt="animal"/>
-                </div>
+            </div>
         );
     }
 }

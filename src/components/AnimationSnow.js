@@ -26,35 +26,32 @@ export default class AnimationSnow extends Component {
             ctx.fillStyle = 'rgb(255, 255, 255)';
             ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
 
-
             for (let i = 0; i < this.maxSnowFlakes; i++) {
                 
-
                 if (this.snowFlakes[i]) {
                     var flake = this.snowFlakes[i];
-                ctx.beginPath();
-                ctx.moveTo(flake.x, flake.y);
-                ctx.arc(flake.x, flake.y, flake.r, 0, Math.PI*2, true); 
-                ctx.fill();
+                    ctx.beginPath();
+                    ctx.moveTo(flake.x, flake.y);
+                    ctx.arc(flake.x, flake.y, flake.r, 0, Math.PI*2, true); 
+                    ctx.fill();
 
                     if (flake.r>=4) {
                         flake.y+=3
                     } else {
-                         flake.y+=flake.r
+                            flake.y+=flake.r
                     }
 
-                if (flake.y >= this.canvasHeight) {
-                    flake.y = 0;
-                }
-                }
-                
+                    if (flake.y >= this.canvasHeight) {
+                        flake.y = 0;
+                    }
+                }       
             } 
+
             requestAnimationFrame(this.moveFlakes);
         }   
     }
 
     setFlakesData = () => {  
-
         for (let i = 0; i < this.maxSnowFlakes; i++) {
             this.snowFlakes.push({
                 x: Math.random()*this.canvasWidth,

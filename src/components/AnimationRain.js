@@ -39,29 +39,26 @@ export default class AnimationRain extends Component {
             ctx.fillStyle = 'rgb(134, 187, 216)';
             ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
 
-
             for (let i = 0; i < this.maxRainDrops; i++) {
-
                 if (this.rainDrops[i]) {
                     var drop = this.rainDrops[i];
-                ctx.beginPath();
-                ctx.moveTo(drop.x, drop.y);
-                ctx.arc(drop.x, drop.y, 5, 0, Math.PI*2, true); 
-                ctx.moveTo(drop.x+5, drop.y);
-                ctx.lineTo(drop.x,drop.y-10);
-                ctx.lineTo(drop.x-5,drop.y);
-                ctx.lineTo(drop.x, drop.y); 
-                ctx.closePath();
-                ctx.fill();
-
-                drop.y+=3
-                
-                if (drop.y >= this.canvasHeight) {
-                    drop.y = 0;
-                }
-                }
-                
+                    ctx.beginPath();
+                    ctx.moveTo(drop.x, drop.y);
+                    ctx.arc(drop.x, drop.y, 5, 0, Math.PI*2, true); 
+                    ctx.moveTo(drop.x+5, drop.y);
+                    ctx.lineTo(drop.x,drop.y-10);
+                    ctx.lineTo(drop.x-5,drop.y);
+                    ctx.lineTo(drop.x, drop.y); 
+                    ctx.closePath();
+                    ctx.fill();
+                    drop.y+=3
+                    
+                    if (drop.y >= this.canvasHeight) {
+                        drop.y = 0;
+                    }
+                }         
             } 
+            
             requestAnimationFrame(this.moveDrops);
         }   
     }
