@@ -65,7 +65,7 @@ export default class App extends Component {
         .then(function(positionObj) {
           var myLatt = positionObj.myLat;
           var myLonn = positionObj.myLon;
-          var api = 'http://api.openweathermap.org/data/2.5/weather?';
+          var api = 'https://api.openweathermap.org/data/2.5/weather?';
           var myPosition = 'lat=' + myLatt + '&lon=' + myLonn + '&units=metric';
           var apiKey = '&APPID=4335ee325906565f64956605fca2ca89';
           var apiUrl = api + myPosition + apiKey;
