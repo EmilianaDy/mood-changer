@@ -11,6 +11,7 @@ Technologies used:
 - React.js
 - Sass
 - Canvas API
+- SVG
 - OpenWeatherMap API
 
 Project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
