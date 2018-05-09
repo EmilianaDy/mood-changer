@@ -6,7 +6,7 @@ import Dropdown from './Dropdown';
 export default class CurrentWeather extends Component {
     constructor(props) { 
         super(props);
-        this.handleChangeWeatherAction = this.handleChangeWeatherAction.bind(this);
+        this.handleCurrentWeatherAction = this.handleCurrentWeatherAction.bind(this);
         this.handleChangeWeatherMouseEnter = this.handleChangeWeatherMouseEnter.bind(this);
         this.handleChangeWeatherMouseLeave = this.handleChangeWeatherMouseLeave.bind(this);
         this.handleWeatherPick = this.handleWeatherPick.bind(this);
@@ -20,7 +20,7 @@ export default class CurrentWeather extends Component {
         this.props.changeConditions("current");
     }
 
-    handleChangeWeatherAction = () => {
+    handleCurrentWeatherAction = () => {
         this.props.changeConditions("current");
         this.weatherSection.style.opacity =  "1";
     }
@@ -83,8 +83,12 @@ export default class CurrentWeather extends Component {
                     </div>
                     <div className="dropdown" style={dropdownOpacity} onMouseEnter={this.handleChangeWeatherMouseEnter} onMouseLeave={this.handleChangeWeatherMouseLeave}>{this.dropdown}</div>
                     <div className="Button__change-mood">
-                        <Button onClick={this.handleChangeWeatherAction} buttonText="Show current weather"/>
+                        <Button onClick={this.handleCurrentWeatherAction} buttonText="Show current weather"/>
                     </div>  
+                    <div className="copyrights">
+                    <p>© 2018 Emilana Guzik</p>
+                    <p>Icons made by <a href="http://.flaticon.com">Freepik</a></p>
+                    </div>
                 </div>
             </div>
         );

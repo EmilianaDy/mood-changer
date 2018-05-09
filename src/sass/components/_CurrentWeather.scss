@@ -41,15 +41,33 @@
         .weather__description-details {
             font-size: 24px;
             font-weight: 700;
+            text-transform: lowercase;
         }
     }
 
     .buttons__section {
         display: grid;
-        grid-template-columns:  180px 20px 200px  auto;
-        grid-template-areas: "pick . change .";
+        grid-template-columns:  180px 20px 200px auto 215px;
+        grid-template-areas: "pick . change . copyrights";
         position: relative;
-        margin: 0 20px;
+        margin: 50px 20px 0;
+
+        .copyrights {
+            grid-area: copyrights;
+            align-self: end;
+            text-align: right;
+            font-size: 10px;
+
+            p {
+                margin: 5px 0 0;
+            }
+
+            a {
+                text-decoration: none;
+                color: #000;
+            }
+
+        }
 
         .Button__pick-mood {
             grid-area: pick;
@@ -95,13 +113,9 @@
             }
         }
 
-        .Button {
-            margin-top: 50px;   
-        }
-
         .dropdown {
             position: absolute;
-            top: -212px;
+            top: -264px;
             left: 0;
             transition: all .3s;
             cursor: pointer;

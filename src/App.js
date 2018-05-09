@@ -14,12 +14,13 @@ export default class App extends Component {
       currentTemperature: "0",
       weatherConditions: "clear sky",
       currentWeather: "current",
+      isCurrentWeatherShowing: true,
       weatherReady: false,
       mobileWidth: false
     };
 
     this.changeConditions = this.changeConditions.bind(this);
-    this.weatherDescriptionsList = ["clear sky", "shower rain", "rain", "few clouds", "broken clouds", "thunderstorm", "snow"];
+    this.weatherDescriptionsList = ["Clear sky", "Shower rain", "Rain", "Few clouds", "Broken clouds", "Thunderstorm", "Snow"];
   }
 
   componentWillMount() {
@@ -39,27 +40,41 @@ export default class App extends Component {
     }
   }
 
-  changeConditions(description) { 
-        var weather;
-        // handle conditions without animation
-        switch (description) {
-          case "scattered clouds":
-            weather = "broken clouds";
-            break;
-          case "mist":
-            weather = "broken Clouds";
-            break;
-          default:
-            weather = "clear sky";
+  changeConditions(description) {      
+        var current = this.state.currentWeather;
+        var conditions;
+
+        if (description === "current" ) {                  
+          description = current;
+          this.setState({isCurrentWeatherShowing: false})
+        } else {          
+          this.setState({weatherConditions: description})           
         }
 
-        if (description === "current") {    
-          weather = this.state.currentWeather;            
+        if (this.state.isCurrentWeatherShowing) {
+          conditions = current;
         } else {
-          weather = description;              
+          conditions = description;
         }
 
-        this.setState({weatherConditions: weather}); 
+        switch (description) {            
+            case "Clouds":
+              description = "Broken clouds";
+              break;
+            case "Drizzle":
+              description = "Rain";
+              break;
+            case "Clear":
+              description = "Clear Sky";
+              break;
+            case "Atmosphere":
+              description = "Broken clouds";
+              break;
+            default:
+              description = conditions;
+        }    
+       
+        this.setState({weatherConditions: description});
   }
 
   getLocation = () => {
@@ -87,7 +102,7 @@ export default class App extends Component {
                           .then(data => this.setState({
                               currentTemperature: data.main.temp,
                               currentCity: data.name,
-                              currentWeather: data.weather[0].description,
+                              currentWeather: data.weather[0].main,
                               weatherIcon: data.weather.icon,
                               weatherReady: true
                           })) 
@@ -116,16 +131,15 @@ export default class App extends Component {
         {!!this.state.weatherReady && 
         <div className="App">
           <Header />
-          <AnimatedWeather weatherConditions = {this.state.weatherConditions}/>
+          <AnimatedWeather weatherConditions = {this.state.weatherConditions}
+                            weatherReady = {this.state.weatherReady}/>
           <CurrentWeather weatherConditions = {this.state.weatherConditions}
                           currentCity = {this.state.currentCity}
                           currentTemperature = {this.state.currentTemperature}
                           changeConditions = {this.changeConditions}
                           weatherDescriptionsList = {this.weatherDescriptionsList}
           />
-        </div>}
-
-        
+        </div>}       
       </div>
     );
   }
