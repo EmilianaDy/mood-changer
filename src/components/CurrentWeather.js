@@ -6,9 +6,9 @@ import Dropdown from './Dropdown';
 export default class CurrentWeather extends Component {
     constructor(props) { 
         super(props);
-        this.handleChangeMoodAction = this.handleChangeMoodAction.bind(this);
-        this.handlePickMoodMouseEnter = this.handlePickMoodMouseEnter.bind(this);
-        this.handlePickMoodMouseLeave = this.handlePickMoodMouseLeave.bind(this);
+        this.handleChangeWeatherAction = this.handleChangeWeatherAction.bind(this);
+        this.handleChangeWeatherMouseEnter = this.handleChangeWeatherMouseEnter.bind(this);
+        this.handleChangeWeatherMouseLeave = this.handleChangeWeatherMouseLeave.bind(this);
         this.handleWeatherPick = this.handleWeatherPick.bind(this);
         this.dropdown = null;
         this.state = {
@@ -16,12 +16,16 @@ export default class CurrentWeather extends Component {
         }
     }
 
-    handleChangeMoodAction = () => {
+    componentDidMount = () => {
+        this.props.changeConditions("current");
+    }
+
+    handleChangeWeatherAction = () => {
         this.props.changeConditions("current");
         this.weatherSection.style.opacity =  "1";
     }
 
-    handlePickMoodMouseEnter = () => {
+    handleChangeWeatherMouseEnter = () => {
         var dropdownList = this.props.weatherDescriptionsList;
 
         this.setState({dropdownOpened: true});
@@ -30,7 +34,7 @@ export default class CurrentWeather extends Component {
         );   
     }
 
-    handlePickMoodMouseLeave = () => {
+    handleChangeWeatherMouseLeave = () => {
         if (this.state.dropdownOpened) {
             this.setState({dropdownOpened: false});
              return <div>{this.dropdown}</div>;
@@ -75,11 +79,11 @@ export default class CurrentWeather extends Component {
                 
                 <div className="buttons__section">
                     <div className="Button__pick-mood">
-                        <Dropdown onMouseEnter={this.handlePickMoodMouseEnter} onMouseLeave={this.handlePickMoodMouseLeave} buttonText="Pick your own"/>
+                        <Dropdown onMouseEnter={this.handleChangeWeatherMouseEnter} onMouseLeave={this.handleChangeWeatherMouseLeave} buttonText="Pick your own"/>
                     </div>
-                    <div className="dropdown" style={dropdownOpacity} onMouseEnter={this.handlePickMoodMouseEnter} onMouseLeave={this.handlePickMoodMouseLeave}>{this.dropdown}</div>
+                    <div className="dropdown" style={dropdownOpacity} onMouseEnter={this.handleChangeWeatherMouseEnter} onMouseLeave={this.handleChangeWeatherMouseLeave}>{this.dropdown}</div>
                     <div className="Button__change-mood">
-                        <Button onClick={this.handleChangeMoodAction} buttonText="Show current weather"/>
+                        <Button onClick={this.handleChangeWeatherAction} buttonText="Show current weather"/>
                     </div>  
                 </div>
             </div>

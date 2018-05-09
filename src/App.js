@@ -13,7 +13,7 @@ export default class App extends Component {
       currentCity: "myCity",
       currentTemperature: "0",
       weatherConditions: "clear sky",
-      currentWeather: "current weather",
+      currentWeather: "current",
       weatherReady: false,
       mobileWidth: false
     };
@@ -40,24 +40,26 @@ export default class App extends Component {
   }
 
   changeConditions(description) { 
-        if (description === "current") {
-          var currentWeather;
-
-          // handle conditions without animation
-          switch (description) {
-            case "scattered clouds":
-              currentWeather = "broken clouds";
-              break;
-            case "mist":
-              currentWeather = "broken Clouds";
-              break;
-            default:
-              currentWeather = this.state.currentWeather;
-          }
-          this.setState({weatherConditions: currentWeather});  
-        } else {
-            this.setState({weatherConditions: description});    
+        var weather;
+        // handle conditions without animation
+        switch (description) {
+          case "scattered clouds":
+            weather = "broken clouds";
+            break;
+          case "mist":
+            weather = "broken Clouds";
+            break;
+          default:
+            weather = "clear sky";
         }
+
+        if (description === "current") {    
+          weather = this.state.currentWeather;            
+        } else {
+          weather = description;              
+        }
+
+        this.setState({weatherConditions: weather}); 
   }
 
   getLocation = () => {
@@ -99,6 +101,7 @@ export default class App extends Component {
         })
   }
 
+  
   render() {
     return (
       <div>
@@ -110,6 +113,7 @@ export default class App extends Component {
         {!this.state.weatherReady && 
         <Loader />}
 
+        {!!this.state.weatherReady && 
         <div className="App">
           <Header />
           <AnimatedWeather weatherConditions = {this.state.weatherConditions}/>
@@ -119,7 +123,9 @@ export default class App extends Component {
                           changeConditions = {this.changeConditions}
                           weatherDescriptionsList = {this.weatherDescriptionsList}
           />
-        </div>
+        </div>}
+
+        
       </div>
     );
   }

@@ -9,9 +9,7 @@ export default class AnimatedWeather extends Component {
 
     provideAnimation() {      
         switch (this.props.weatherConditions.toLowerCase()) {
-            default:
-                return <AnimationClearSky />
-
+                  
             case "clear sky":
                 return <AnimationClearSky />
 
@@ -32,6 +30,9 @@ export default class AnimatedWeather extends Component {
 
             case "snow":
                 return <AnimationSnow />
+
+            default:
+                return <AnimationClearSky />
         }
     }
     
